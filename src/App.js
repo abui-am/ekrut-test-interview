@@ -1,4 +1,4 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   BasicInformationForm,
   EducationFormList,
@@ -14,6 +14,8 @@ import {
 import { Button } from './components/Button';
 import items from './api/items';
 import { useState } from 'react';
+import toast from 'react-hot-toast';
+import { RESET } from './redux/reducer/profileReducer';
 
 function App() {
   return (
@@ -33,6 +35,7 @@ const ButtonSave = () => {
   const phone = useSelector(selectPhone);
   const educations = useSelector(selectEducations) ?? [];
   const experiences = useSelector(selectExperiences) ?? [];
+  const dispatch = useDispatch();
   const save = async () => {
     try {
       setIsSubmiting(true);
@@ -60,11 +63,13 @@ const ButtonSave = () => {
         }))
       );
       setIsSubmiting(false);
+      toast.success('Data has been successfully saved');
+      dispatch({ type: RESET });
+      console.log('Data has been successfully saved');
     } catch (e) {
+      toast.error('Failed to save data');
       setIsSubmiting(false);
     }
-
-    console.log('Successfully save data');
   };
 
   return (

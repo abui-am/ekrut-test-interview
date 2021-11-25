@@ -51,7 +51,7 @@ export const BasicInformationForm = () => {
               onChange={e => {
                 dispatch({ type: EMAIL, payload: e.target.value });
               }}
-              email={email}
+              value={email}
               label="Email"
               type="email"
               name="email"
@@ -224,7 +224,7 @@ export const ExperienceFormList = () => {
         })}
         <Button
           Icon={<PlusLg />}
-          wonClick={() => dispatch({ type: ADD_EXPERIENCE })}
+          onClick={() => dispatch({ type: ADD_EXPERIENCE })}
         >
           Add New
         </Button>

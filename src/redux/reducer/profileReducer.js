@@ -17,6 +17,8 @@ export const ADD_EXPERIENCE = 'ADD_EXPERIENCE';
 export const UPDATE_EXPERIENCE = 'UPDATE_EXPERIENCE';
 export const DELETE_EXPERIENCE = 'DELETE_EXPERIENCE';
 
+export const RESET = 'RESET';
+
 const INITIAL_STATE = {
   fullName: '',
   phoneNumber: '',
@@ -43,6 +45,9 @@ const INITIAL_STATE = {
 
 const profileReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
+    case RESET:
+      return INITIAL_STATE;
+
     case FULL_NAME:
       return {
         ...state,
