@@ -76,6 +76,35 @@ export const BasicInformationForm = () => {
   );
 };
 
+export const EducationFormList = () => {
+  const dispatch = useDispatch();
+  const educations = useSelector(selectEducations);
+
+  return (
+    <Card>
+      <section>
+        <h1 className="text-2xl font-bold mb-4">Education</h1>
+        {educations.map((edu, index) => {
+          return (
+            <EducationForm
+              key={edu.id}
+              education={edu}
+              index={index}
+              disableDelete={index === 0}
+            />
+          );
+        })}
+        <Button
+          Icon={<PlusLg />}
+          onClick={() => dispatch({ type: ADD_EDUCATION })}
+        >
+          Add New
+        </Button>
+      </section>
+    </Card>
+  );
+};
+
 export const EducationForm = ({ education, index, disableDelete }) => {
   const dispatch = useDispatch();
   return (
@@ -173,6 +202,35 @@ EducationForm.propTypes = {
   },
   index: PropTypes.string,
   disableDelete: PropTypes.bool
+};
+
+export const ExperienceFormList = () => {
+  const dispatch = useDispatch();
+  const experiences = useSelector(selectExperiences) ?? [];
+
+  return (
+    <Card>
+      <section>
+        <h1 className="text-2xl font-bold mb-4">Experience</h1>
+        {experiences.map((experience, index) => {
+          return (
+            <ExperienceForm
+              key={experience.id}
+              experience={experience}
+              index={index}
+              disableDelete={index === 0}
+            />
+          );
+        })}
+        <Button
+          Icon={<PlusLg />}
+          wonClick={() => dispatch({ type: ADD_EXPERIENCE })}
+        >
+          Add New
+        </Button>
+      </section>
+    </Card>
+  );
 };
 
 export const ExperienceForm = ({ experience, index, disableDelete }) => {
@@ -273,62 +331,4 @@ ExperienceForm.propTypes = {
   },
   index: PropTypes.string,
   disableDelete: PropTypes.bool
-};
-
-export const EducationFormList = () => {
-  const dispatch = useDispatch();
-  const educations = useSelector(selectEducations);
-
-  return (
-    <Card>
-      <section>
-        <h1 className="text-2xl font-bold mb-4">Education</h1>
-        {educations.map((edu, index) => {
-          return (
-            <EducationForm
-              key={edu.id}
-              education={edu}
-              index={index}
-              disableDelete={index === 0}
-            />
-          );
-        })}
-        <Button
-          Icon={<PlusLg />}
-          onClick={() => dispatch({ type: ADD_EDUCATION })}
-        >
-          Add New
-        </Button>
-      </section>
-    </Card>
-  );
-};
-
-export const ExperienceFormList = () => {
-  const dispatch = useDispatch();
-  const experiences = useSelector(selectExperiences) ?? [];
-
-  return (
-    <Card>
-      <section>
-        <h1 className="text-2xl font-bold mb-4">Experience</h1>
-        {experiences.map((experience, index) => {
-          return (
-            <ExperienceForm
-              key={experience.id}
-              experience={experience}
-              index={index}
-              disableDelete={index === 0}
-            />
-          );
-        })}
-        <Button
-          Icon={<PlusLg />}
-          wonClick={() => dispatch({ type: ADD_EXPERIENCE })}
-        >
-          Add New
-        </Button>
-      </section>
-    </Card>
-  );
 };
