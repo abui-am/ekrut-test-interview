@@ -50,6 +50,7 @@ Check out: [https://github.com/immerjs/immer](https://github.com/immerjs/immer)
 ### React Redux
 
 Check out: [https://react-redux.js.org](https://react-redux.js.org)
+
 For optimizing redux, please check: [https://redux.js.org/usage/deriving-data-selectors](https://redux.js.org/usage/deriving-data-selectors)
 
 ### Code Splitting
